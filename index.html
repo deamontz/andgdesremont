@@ -3,18 +3,16 @@
    <head>
      <title>Калькулятор ремонта</title>
      <meta charset="utf-8">
+    
     <style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff !important; /* Белый фон */
-    color: #000000 !important; /* Чёрный текст */
-    font-family: -apple-system, Arial, sans-serif;
-  }
-  canvas {
-    background-color: #fffff6 !important;
-  }
-</style>
+       body { font-family: Arial; padding: 20px; }
+       .page { display: none; }
+       .page.active { display: block; }
+       input, select, button { margin: 10px; padding: 10px; }
+       #result { font-weight: bold; }
+      background-color: #ffffff;
+     </style>
+
    </head>
    <body>
      <!-- Страница 1: Площадь -->
@@ -36,8 +34,8 @@
          <option value="premium">Премиум</option>
        </select>
        <br>
-       <button onclick="goToPage(1)">Назад</button>
-       <button onclick="goToPage(3)">Далее</button>
+       <button onclick="ToPage(1)">Назад</button>
+       <button onclick="ToPage(3)">Далее</button>
      </div>
 
      <!-- Страница 3: Дополнительные услуги -->
@@ -49,7 +47,7 @@
        <label><input type="checkbox" id="porcelain"> Крупноформатный керамогранит</label><br>
        <label><input type="checkbox" id="plaster"> Молдинги, лепнина, гипс </label><br>
        <label><input type="checkbox" id="design"> Дизайн-проект, комплектация, авторский надзор</label><br>
-       <button onclick="goToPage(2)">Назад</button>
+       <button onclick="ToPage(2)">Назад</button>
        <button onclick="calculate()">Рассчитать</button>
      </div>
 
@@ -57,15 +55,20 @@
      <div id="page4" class="page">
        <h2>Результат</h2>
        <p id="result"></p>
-       <button onclick="goToPage(1)">Начать заново</button>
+       <button onclick="ToPage(1)">Начать заново</button>
      </div>
 
      <script>
        // Переключение страниц
-       function goToPage(pageNumber) {
-         document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-        document.getElementById(`page${pageNumber}`).classList.add('active');
- }
+      function goToPage(pageNumber) {
+  document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+  document.getElementById(`page${pageNumber}`).classList.add('active');
+}
+
+  //     function goToPage(pageNumber) {
+   //      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+       // document.getElementById(`page${pageNumber}`).classList.add('active');
+// }
 
        // Расчет стоимости
      
