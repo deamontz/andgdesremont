@@ -59,9 +59,12 @@
 
      <script>
        // Переключение страниц
-   function goToPage(pageNumber) {
-          document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-         document.getElementById(`page${pageNumber}`).classList.add('active'); }
+    // Переключение страниц
+       function goToPage(pageNumber) {
+         document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+        document.getElementById(page${pageNumber}).classList.add('active');
+ }
+
 
        // Расчет стоимости
      
