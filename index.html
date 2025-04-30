@@ -1,108 +1,106 @@
-<!DOCTYPE html>
-   <html>
-   <head>
-     <title>Калькулятор ремонта</title>
-     <meta charset="utf-8">
-     <style>
-       body { font-family: Arial; padding: 20px; }
-       .page { display: none; }
-       .page.active { display: block; }
-       input, select, button { margin: 10px; padding: 10px; }
-       #result { font-weight: bold; }
-     </style>
-   </head>
-   <body>
-
-   <body>
-     <!-- Страница 1: Площадь -->
-     <div id="page1" class="page active">
-       <h2>Шаг 1: Укажите площадь квартиры</h2>
-       <label>Площадь (м²):</label>
-       <input type="number" id="area" placeholder="Введите площадь">
-       <br>
-       <button onclick="goToPage(2)">Далее</button>
-     </div>
-
-     <!-- Страница 2: Тип ремонта -->
-     <div id="page2" class="page">
-       <h2>Шаг 2: Выберите тип ремонта</h2>
-       <label>Тип ремонта:</label>
-       <select id="type">
-         <option value="budget">Эконом</option>
-         <option value="standard">Стандарт</option>
-         <option value="premium">Премиум</option>
-       </select>
-       <br>
-       <button onclick="ToPage(1)">Назад</button>
-       <button onclick="ToPage(3)">Далее</button>
-     </div>
-
-     <!-- Страница 3: Дополнительные услуги -->
-     <div id="page3" class="page">
-       <h2>Шаг 3: Дополнительные нюансы </h2>
-       <label><input type="checkbox" id="furniture"> Мебель на заказ</label><br>
-       <label><input type="checkbox" id="curtain"> Пошив штор на заказ</label><br>
-       <label><input type="checkbox" id="ceiling"> Потолок из гипсокартона</label><br>
-       <label><input type="checkbox" id="porcelain"> Крупноформатный керамогранит</label><br>
-       <label><input type="checkbox" id="plaster"> Молдинги, лепнина, гипс </label><br>
-       <label><input type="checkbox" id="design"> Дизайн-проект, комплектация, авторский надзор</label><br>
-       <button onclick="ToPage(2)">Назад</button>
-       <button onclick="calculate()">Рассчитать</button>
-     </div>
-
-     <!-- Результат -->
-     <div id="page4" class="page">
-       <h2>Результат</h2>
-       <p id="result"></p>
-       <button onclick="ToPage(1)">Начать заново</button>
-     </div>
-
-     <script>
-       // Переключение страниц
-    // Переключение страниц
-       function goToPage(pageNumber) {
-         document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-        document.getElementById(page${pageNumber}).classList.add('active');
- }
-
-
-       // Расчет стоимости
-     
- function calculate() {
-    let area = parseFloat(document.getElementById('area').value);
-    if (isNaN(area) || area <= 25) {
-        area = 25; // Устанавливаем значение по умолчанию 25
-    }
-
-       
-         let type = document.getElementById('type').value;
-         let furniture = document.getElementById('furniture').checked;
-         let curtain = document.getElementById('curtain').checked;
-         let ceiling = document.getElementById('ceiling').checked;
-         let porcelain = document.getElementById('porcelain').checked;
-         let plaster = document.getElementById('plaster').checked;
-         let design = document.getElementById('design').checked;
-
-
-
-         // Цены за м²
-         let pricePerM2 = type === 'budget' ? 70000 : type === 'standard' ? 120000 : 200000;
-         let total = area * pricePerM2;
+ <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Калькулятор ремонта</title>
+      <meta charset="utf-8">
+      <style>
+        body { font-family: Arial; padding: 20px; }
+        .page { display: none; }
+        .page.active { display: block; }
+        input, select, button { margin: 10px; padding: 10px; }
+        #result { font-weight: bold; }
+      </style>
+    </head>
+    <body>
+      <!-- Страница 1: Площадь -->
+      <div id="page1" class="page active">
+        <h2>Шаг 1: Укажите площадь квартиры</h2>
+        <label>Площадь (м²):</label>
+        <input type="number" id="area" placeholder="Введите площадь">
+        <br>
+        <button onclick="goToPage(2)">Далее</button>
+      </div>
  
- // Доп. услуги
-         if (furniture) total += total * 0.15;
-         if (curtain) total += (area * 0.25);
-         if (ceiling) total += (area * 2500);
-         if (porcelain) total += (area * 2);
-         if (plaster) total += (area * 3500);
-         if (design) total += (area * 100)+300000;
-         total = Math.round(total / 100) * 100;
-         let formattedTotal = total.toLocaleString('ru-RU');
-         document.getElementById('result').innerHTML = `Стоимость ремонта ${formattedTotal} руб.`;
-         
-       
-         goToPage(4); // Переход к результату
-       }
-     </script>
-   </body>
-   </html>
+      <!-- Страница 2: Тип ремонта -->
+      <div id="page2" class="page">
+        <h2>Шаг 2: Выберите тип ремонта</h2>
+        <label>Тип ремонта:</label>
+        <select id="type">
+          <option value="budget">Эконом</option>
+          <option value="standard">Стандарт</option>
+          <option value="premium">Премиум</option>
+        </select>
+        <br>
+        <button onclick="goToPage(1)">Назад</button>
+        <button onclick="goToPage(3)">Далее</button>
+      </div>
+ 
+      <!-- Страница 3: Дополнительные услуги -->
+      <div id="page3" class="page">
+        <h2>Шаг 3: Дополнительные нюансы </h2>
+        <label><input type="checkbox" id="furniture"> Мебель на заказ</label><br>
+        <label><input type="checkbox" id="curtain"> Пошив штор на заказ</label><br>
+        <label><input type="checkbox" id="ceiling"> Потолок из гипсокартона</label><br>
+        <label><input type="checkbox" id="porcelain"> Крупноформатный керамогранит</label><br>
+        <label><input type="checkbox" id="plaster"> Молдинги, лепнина, гипс </label><br>
+        <label><input type="checkbox" id="design"> Дизайн-проект, комплектация, авторский надзор</label><br>
+        <button onclick="goToPage(2)">Назад</button>
+        <button onclick="calculate()">Рассчитать</button>
+      </div>
+ 
+      <!-- Результат -->
+      <div id="page4" class="page">
+        <h2>Результат</h2>
+        <p id="result"></p>
+        <button onclick="goToPage(1)">Начать заново</button>
+      </div>
+ 
+      <script>
+        // Переключение страниц
+        function goToPage(pageNumber) {
+          document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+         document.getElementById(`page${pageNumber}`).classList.add('active');
+  }
+ 
+        // Расчет стоимости
+      
+ 
+ 
+  function calculate() {
+     let area = parseFloat(document.getElementById('area').value);
+     if (isNaN(area) || area <= 25) {
+         area = 25; // Устанавливаем значение по умолчанию 25
+     }
+ 
+        
+          let type = document.getElementById('type').value;
+          let furniture = document.getElementById('furniture').checked;
+          let curtain = document.getElementById('curtain').checked;
+          let ceiling = document.getElementById('ceiling').checked;
+          let porcelain = document.getElementById('porcelain').checked;
+          let plaster = document.getElementById('plaster').checked;
+          let design = document.getElementById('design').checked;
+ 
+ 
+ 
+          // Цены за м²
+          let pricePerM2 = type === 'budget' ? 70000 : type === 'standard' ? 120000 : 200000;
+          let total = area * pricePerM2;
+  
+  // Доп. услуги
+          if (furniture) total += total * 0.15;
+          if (curtain) total += (area * 0.25);
+          if (ceiling) total += (area * 2500);
+          if (porcelain) total += (area * 2);
+          if (plaster) total += (area * 3500);
+          if (design) total += (area * 100)+300000;
+          total = Math.round(total / 100) * 100;
+          let formattedTotal = total.toLocaleString('ru-RU');
+          document.getElementById('result').innerHTML = `Стоимость ремонта ${formattedTotal} руб.`;
+          
+        
+          goToPage(4); // Переход к результату
+        }
+      </script>
+    </body>
+    </html>
