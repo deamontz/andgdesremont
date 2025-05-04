@@ -94,6 +94,8 @@ function calculate() {
     if (inputs.decorwall) total += 800 * area * (baseCost / 60000);
     if (inputs.smarthome) total += (1000 * area + 300000);
 
+	
+}
 	total = Math.round(total / 100) * 100;
            let formattedTotal = total.toLocaleString('ru-RU');
            document.getElementById('result').innerHTML = `Стоимость ремонта ${formattedTotal} руб.`;
