@@ -1,106 +1,141 @@
- <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Калькулятор ремонта</title>
-      <meta charset="utf-8">
-      <style>
-        body { font-family: Arial; padding: 20px; }
-        .page { display: none; }
-        .page.active { display: block; }
-        input, select, button { margin: 10px; padding: 10px; }
-        #result { font-weight: bold; }
-      </style>
-    </head>
-    <body>
-      <!-- Страница 1: Площадь -->
-      <div id="page1" class="page active">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	    <meta charset="utf-8">
+	<title>Калькулятор</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/templatemo-style.css">                                 
+</head>
+      <body>
+      
+        <div class="container-fluid" id="main">                
+              <div class="tm-page-content-width tm-padding-b">
+                    <div class="text-center tm-site-title-wrap">
+                        <h1 class="tm-site-title"><strong>Калькулятор ремонта</strong></h1>
+</div> 
+				  </div> 
+			</div> 
+		 <div class="main-container">
+    <div id="page1" class="page active left-side">
         <h2>Шаг 1: Укажите площадь квартиры</h2>
         <label>Площадь (м²):</label>
         <input type="number" id="area" placeholder="Введите площадь">
-        <br>
-        <button onclick="goToPage(2)">Далее</button>
-      </div>
- 
-      <!-- Страница 2: Тип ремонта -->
-      <div id="page2" class="page">
-        <h2>Шаг 2: Выберите тип ремонта</h2>
-        <label>Тип ремонта:</label>
+        <h2>Укажите высоту потолков</h2>
+        <label>Высота (м):</label>
+        <input type="number" id="Hkvar" placeholder="Введите высоту">
+        <h2>Уровень ремонта</h2>
+        <label>Укажите бюджет:</label>
         <select id="type">
-          <option value="budget">Эконом</option>
-          <option value="standard">Стандарт</option>
-          <option value="premium">Премиум</option>
+            <option value="budget">Бюджетный</option>
+            <option value="standard">Стандартный</option>
+            <option value="premium">Премиум</option>
+        </select>
+        <h2>Стадия помещения для ремонта</h2>
+        <label>Состояние помещения:</label>
+        <select id="study">
+            <option value="chern">Черновой</option>
+            <option value="chist">Чистовой</option>
+            <option value="demont">Демонтаж</option>
         </select>
         <br>
-        <button onclick="goToPage(1)">Назад</button>
-        <button onclick="goToPage(3)">Далее</button>
-      </div>
- 
-      <!-- Страница 3: Дополнительные услуги -->
-      <div id="page3" class="page">
-        <h2>Шаг 3: Дополнительные нюансы </h2>
-        <label><input type="checkbox" id="furniture"> Мебель на заказ</label><br>
-        <label><input type="checkbox" id="curtain"> Пошив штор на заказ</label><br>
-        <label><input type="checkbox" id="ceiling"> Потолок из гипсокартона</label><br>
-        <label><input type="checkbox" id="porcelain"> Крупноформатный керамогранит</label><br>
-        <label><input type="checkbox" id="plaster"> Молдинги, лепнина, гипс </label><br>
-        <label><input type="checkbox" id="design"> Дизайн-проект, комплектация, авторский надзор</label><br>
-        <button onclick="goToPage(2)">Назад</button>
+        <button onclick="goToPage(2)">Далее</button>
+    </div>
+    <div id="right-page1" class="page active right-side">
+        <h2>Информация</h2>
+        <p><strong>Бюджетный ремонт:</strong>обычные черновые и чистовые материалы, строители универсалы</p>
+		<p><strong>Стандартный ремонт:</strong>лучше черновые материалы, теплые полы, запил керамогранита под 45, строители универсалы</p>
+		<p><strong>Премиум ремонт:</strong>Топовые черновые и чистовые материалы, строительная бригада с прорабом, тех. надзор</p>
+    </div>
+
+    <!-- Страница 2: Тип ремонта -->
+    <div id="page2" class="page left-side">
+        <h2>Шаг 2: Отопление, кондиционирование, вода</h2>
+		<h3> Кондиционирование</h3>
+		<label><input type="checkbox" id="kond"> Настаенные кондиционеры </label><br>
+		<label><input type="checkbox" id="prit"> Приточная вентиляция</label><br>
+		<h3> Узел водоснабжения</h3>
+		<label><input type="checkbox" id="waterst"> Фильтрация, редукторы давления </label><br>
+		<label><input type="checkbox" id="waterprem"> Сборный узел + защита от протечек</label><br>
+		<h3> Отопление</h3>
+		<label>Батареи:</label>
+		<select id="bat">
+          <option value="batno">Без замены</option>
+            <option value="batnew">Замена на страндартные</option>
+            <option value="batdes">Замена на "дизайнерские"</option>
+        </select>
+		<br>
+		<button onclick="goToPage(3)">Далее</button>
+		  </div>
+		<div id="right-page2" class="page right-side">
+        <h2>Информация</h2>
+        <p><strong>Кондиционирование:</strong> Выбирайте первый пункт если планируются, настенные блоки или мультисплит системы, а так же бризеры и второй вариант, если приточновытяжная вентиляция.
+		<p><strong>Узел водоснабжения</strong><strong>:</strong>Выберете сразу 2 пункта, если нужен узел ввода воды и защитаот протечек на все "мокрые зоны". Для управления через умный домвоспользуйтесь опцией на последней странице.</p>
+		<p><strong>Отопление:</strong>Под стандартными батареями подразумевается биметалические, под дизайнерскими - трубчатые и чугунные.</p>
+    </div>
+        <footer>&nbsp;</footer>
+		   <!-- Страница 3: Чистовые материалы -->
+   <div id="page3" class="page left-side">
+        <h2>Шаг 3: Чистовые материалы</h2>
+		<h3> Напольные покрытия</h3> <br>
+		<label>Выберите покрытие:</label>
+		<select id="pol">
+          <option value="laminat">Ламинат</option>
+            <option value="standard">Стандартный</option>
+            <option value="premium">Премиум</option>
+        </select>
+		<br>
+		<h3> Стены</h3> <br>
+		<label>Выберите покрытие:</label>
+		<select id="wall">
+          <option value="oboi">Обои</option>
+            <option value="kraska">Краска</option>
+            <option value="decor">Декоративная штукатурка</option>
+			 <option value="mixwall">Несколько покрытий</option>
+        </select>
+		<br>
+		<h3> Потолок</h3> <br>		    
+        <label><input type="checkbox" id="nat"> Натяжной потолок</label><br>
+        <label><input type="checkbox" id="gips"> Гипсокартон под покраску</label><br>
+     <button onclick="goToPage(4)">Далее</button>
+		  </div>
+		<div id="right-page3" class="page right-side">
+        <h2>Информация</h2>
+        <p><strong>Наольные покрытия:</strong> Показывается покрытия все, кроме сан узлов. 
+		<p><strong>Стены:</strong>Если у Вас присутсвуют декоративные элементы - выберете на последней странице.</p>
+		<p><strong>Потолок:</strong>Не выбираейте ничего, если потолок под "штукатурку".</p>
+    </div>
+        
+		   <!-- Страница 4: Мебель и доп функции -->
+    <div id="page4" class="page left-side">
+        <h2>Шаг 4: Мебель и доп опции</h2>
+		<h3> Мебель под заказ</h3> <br>
+        <label><input type="checkbox" id="kuchnya"> Кухонный гарнитур</label><br>
+        <label><input type="checkbox" id="bedroom"> Мебель в спальню</label><br>
+	    <label><input type="checkbox" id="sanusel"> Мебель в сан. узел</label><br>
+        <label><input type="checkbox" id="anoroom"> Мебель в другие помещения</label><br>
+		<h3> Дополнительные опции</h3> <br>
+        <label><input type="checkbox" id="curtain"> Шторы под заказ</label><br>
+        <label><input type="checkbox" id="plaster"> Карнизы, молдинги</label><br>
+        <label><input type="checkbox" id="decorwall"> Другие декоративные покрытия</label><br>
+        <label><input type="checkbox" id="smarthome">"Умный дом"</label><br>
+        
         <button onclick="calculate()">Рассчитать</button>
-      </div>
- 
-      <!-- Результат -->
-      <div id="page4" class="page">
-        <h2>Результат</h2>
-        <p id="result"></p>
-        <button onclick="goToPage(1)">Начать заново</button>
-      </div>
- 
-      <script>
-        // Переключение страниц
-        function goToPage(pageNumber) {
-          document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-         document.getElementById(`page${pageNumber}`).classList.add('active');
-  }
- 
-        // Расчет стоимости
-      
- 
- 
-  function calculate() {
-     let area = parseFloat(document.getElementById('area').value);
-     if (isNaN(area) || area <= 25) {
-         area = 25; // Устанавливаем значение по умолчанию 25
-     }
- 
-        
-          let type = document.getElementById('type').value;
-          let furniture = document.getElementById('furniture').checked;
-          let curtain = document.getElementById('curtain').checked;
-          let ceiling = document.getElementById('ceiling').checked;
-          let porcelain = document.getElementById('porcelain').checked;
-          let plaster = document.getElementById('plaster').checked;
-          let design = document.getElementById('design').checked;
- 
- 
- 
-          // Цены за м²
-          let pricePerM2 = type === 'budget' ? 70000 : type === 'standard' ? 120000 : 200000;
-          let total = area * pricePerM2;
-  
-  // Доп. услуги
-          if (furniture) total += total * 0.15;
-          if (curtain) total += (area * 0.25);
-          if (ceiling) total += (area * 2500);
-          if (porcelain) total += (area * 2);
-          if (plaster) total += (area * 3500);
-          if (design) total += (area * 100)+300000;
-          total = Math.round(total / 100) * 100;
-          let formattedTotal = total.toLocaleString('ru-RU');
-          document.getElementById('result').innerHTML = `Стоимость ремонта ${formattedTotal} руб.`;
-          
-        
-          goToPage(4); // Переход к результату
-        }
-      </script>
-    </body>
-    </html>
+    </div>
+	<div id="right-page4" class="page right-side">
+        <h2>Информация</h2>
+        <p><strong>Мебель под заказ:</strong> Не выбирайте ничего, если будет покупать готовая мебель эконом и стандарт сегмента. 
+		<p><strong>Дополнительные опции:</strong>Карзины и молдинги - для классического стиля или неоклассики.</p>
+		"Умный дом" - система на основе ZigBee, для более сложных систем нужен расчет. 
+    </div>	
+
+    <!-- Страница 5: Результат -->
+    <div id="page5" class="page left-side">
+  <h2>Результат</h2>
+  <p id="result"></p> <!-- Добавьте этот элемент для отображения результата -->
+  <button onclick="resetForm()">Начать заново</button>
+</div>
+		  </div>
+      <script src="script.js"></script>
+		</body>
+</html>
