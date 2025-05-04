@@ -1,8 +1,8 @@
 body {
     font-family: Arial;
-    padding: 10px;
+    padding: 20px;
   background-image: url("../img/bg-01.jpg");
-	font-size: 60%;
+	font-size: 80%;
 	background-size: 100% auto; /* Изображение растягивается по ширине, высота автоматически */
     background-repeat: no-repeat;
     background-position: center;
@@ -20,14 +20,14 @@ h1 {
 
 .left-side {
     flex: 1;
+	
     padding: 20px;
 }
 
 .right-side {
-    width: 100px;
+    width: 20%;
     padding: 20px;
     border-left: 1px solid #514444;
-}
 
 .page {
     display: none;
