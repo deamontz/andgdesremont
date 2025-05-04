@@ -1,22 +1,17 @@
-let currentPage = 1; // Переменная для отслеживания текущей страницы
+let currentPage = 1;
 
 function goToPage(pageNumber) {
-    // Скрываем текущую страницу
-    document.getElementById('page' + currentPage).classList.remove('active');
-
-    // Показываем новую страницу
-    document.getElementById('page' + pageNumber).classList.add('active');
-
-    // Обновляем текущую страницу
+    document.getElementById(`page${currentPage}`).classList.remove('active');
+    document.getElementById(`page${pageNumber}`).classList.add('active');
     currentPage = pageNumber;
 }
 
 function calculate() {
     let area = parseFloat(document.getElementById('area').value) || 25;
     if (area < 25) area = 25;
-
-    let hkvar = parseFloat(document.getElementById('Hkvar')?.value) || 2.4;
-    if (hkvar < 2.4) hkvar = 2.4;
+    
+    let Hkvar = parseFloat(document.getElementById('Hkvar')?.value) || 2.4;
+    if (Hkvar < 2.4) Hkvar = 2.4;
 
     const inputs = {
         type: document.getElementById('type').value,
@@ -40,66 +35,62 @@ function calculate() {
         smarthome: document.getElementById('smarthome').checked
     };
 
-    let baseCost, basestudy, batary = 0, walldecor = 0, poldecor = 0;
+    let baseCost, basestudy, batary, walldecor = 0, poldecor = 0;
 
-    switch (inputs.type) {
+    switch(inputs.type) {
         case 'budget': baseCost = 60000; break;
         case 'standard': baseCost = 120000; break;
         case 'premium': baseCost = 200000; break;
         default: baseCost = 60000;
     }
 
-    switch (inputs.study) {
+    switch(inputs.study) {
         case 'chern': basestudy = 1; break;
         case 'chist': basestudy = 0.7; break;
         case 'demont': basestudy = 1.05; break;
         default: basestudy = 1;
     }
 
-    switch (inputs.bat) {
+    switch(inputs.bat) {
         case 'batno': batary = 0; break;
-        case 'batnew': batary = (area / 12) * 10000; break;
-        case 'batdes': batary = (area / 12) * 40000; break;
+        case 'batnew': batary = area/12*10000; break;
+        case 'batdes': batary = area/12*40000; break;
         default: batary = 0;
     }
 
-    switch (inputs.wall) {
-        case 'oboi': walldecor = area * hkvar * 300; break;
-        case 'kraska': walldecor = area * hkvar * 600; break;
-        case 'decor': walldecor = area * hkvar * 450; break;
-        case 'mixwall': walldecor = area * hkvar * 420; break;
+    switch(inputs.wall) {
+        case 'oboi': walldecor = area*Hkvar*300; break;
+        case 'kraska': walldecor = area*Hkvar*600; break;
+        case 'decor': walldecor = area*Hkvar*450; break;
+        case 'mixwall': walldecor = area*Hkvar*420; break;
         default: walldecor = 0;
     }
 
-    switch (inputs.pol) {
-        case 'laminat': poldecor = area * 2000; break;
-        case 'kvarz': poldecor = area * 3200; break;
-        case 'ingener': poldecor = area * 6000; break;
-        case 'massiv': poldecor = area * 8000; break;
+    switch(inputs.pol) {
+        case 'laminat': poldecor = area*2000; break;
+        case 'kvarz': poldecor = area*3200; break;
+        case 'ingener': poldecor = area*6000; break;
+        case 'massiv': poldecor = area*8000; break;
         default: poldecor = 0;
     }
 
     let total = (baseCost * area * basestudy) + batary + poldecor + walldecor;
 
-    if (inputs.kond) total += (area / 30) * 50000;
-    if (inputs.prit) total += (area / 100 * 10) + 400000;
-    if (inputs.nat) total += area * 1500;
-    if (inputs.gips) total += area * 3000;
-    if (inputs.kuchnya) total += (area / 10) * 100000 * (baseCost / 60000);
-    if (inputs.sanusel) total += (area / 10) * 100000 * (baseCost / 60000);
-    if (inputs.bedroom) total += (area / 10) * 50000 * (baseCost / 60000);
-    if (inputs.anoroom) total += (area / 10) * 50000 * (baseCost / 60000);
-    if (inputs.curtain) total += 5000 * area * (baseCost / 60000);
-    if (inputs.plaster) total += 800 * area * (baseCost / 60000);
-    if (inputs.decorwall) total += 800 * area * (baseCost / 60000);
+    if (inputs.kond) total += area/30*50000;
+    if (inputs.prit) total += (area/100*10)+400000;
+    if (inputs.nat) total += area*1500;
+    if (inputs.gips) total += area*3000;
+    if (inputs.kuchnya) total += area/10*100000*baseCost/60000;
+    if (inputs.sanusel) total += area/10*100000*baseCost/60000;
+    if (inputs.bedroom) total += area/10*50000*baseCost/60000;
+    if (inputs.anoroom) total += area/10*50000*baseCost/60000;
+    if (inputs.curtain) total += 5000 * area*baseCost/60000;
+    if (inputs.plaster) total += 800 * area*baseCost/60000;
+    if (inputs.decorwall) total += 800 * area*baseCost/60000;
     if (inputs.smarthome) total += (1000 * area + 300000);
 
-	
-}
-	total = Math.round(total / 100) * 100;
-           let formattedTotal = total.toLocaleString('ru-RU');
-           document.getElementById('result').innerHTML = `Стоимость ремонта ${formattedTotal} руб.`;
-    goToPage(5);
+    total = Math.round(total / 100) * 100;
+    return total.toLocaleString('ru-RU');
 }
 
 // Обработчик события для кнопки
