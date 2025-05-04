@@ -56,7 +56,7 @@ function calculate() {
         case 'chern': basestudy = 1; break;
         case 'chist': basestudy = 0.7; break;
         case 'demont': basestudy = 1.05; break;
-		   default: basestudy = 60000;
+		   default: basestudy = 1;
 	}	  
 	switch(bat) {
         case 'batno': batary = 0; break;
