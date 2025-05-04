@@ -111,16 +111,7 @@
   <p id="result"></p> <!-- Добавьте этот элемент для отображения результата -->
 		<button onclick="resetForm()">Заново</button>
 </div>
-<script>
-    function hideKeyboard(event) {
-        // Проверяем, не был ли клик по input или textarea
-        if (event.target.tagName !== 'INPUT' && event.target.tagName !== 'TEXTAREA') {
-            if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
-                document.activeElement.blur();
-            }
-        }
-    }
-    </script>
+
     <script src="script.js"></script>
 </body>
 </html>
