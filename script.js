@@ -119,6 +119,21 @@ function resetForm() {
     // Переход на первую страницу
     goToPage(1);
 }
+<script>
+document.addEventListener('click', function(event) {
+    // Проверяем, не был ли клик по input или textarea
+    if (event.target.tagName !== 'INPUT' && event.target.tagName !== 'TEXTAREA') {
+        hideKeyboard();
+    }
+});
+
+function hideKeyboard() {
+    // Если фокус на каком-либо элементе ввода, снимаем его
+    if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
+        document.activeElement.blur();
+    }
+}
+</script>
 //stady
 // chern - черновой
 //chist - чистовой
