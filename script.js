@@ -10,10 +10,6 @@ function goToPage(pageNumber) {
     // Показываем новую страницу в левом блоке
     document.getElementById('page' + pageNumber).classList.add('active');
 
-    // Скрываем текущую страницу в правом блоке
-    document.getElementById('right-page' + currentPage).classList.remove('active');
-    // Показываем новую страницу в правом блоке
-    document.getElementById('right-page' + pageNumber).classList.add('active');
 
     // Обновляем текущую страницу
     currentPage = pageNumber;
