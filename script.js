@@ -31,8 +31,8 @@ function calculate() {
     let prit = document.getElementById('prit').checked;
     let waterst = document.getElementById('waterst').checked;
     let waterprem = document.getElementById('waterprem').checked;
-   	let wall = document.getElementById('wall').checked;
-	let pol = document.getElementById('pol').checked;
+   	let wall = document.getElementById('wall').value;
+	let pol = document.getElementById('pol').value;
     let nat = document.getElementById('nat').checked;
     let gips = document.getElementById('gips').checked;
     let kuchnya = document.getElementById('kuchnya').checked;
@@ -56,7 +56,7 @@ function calculate() {
         case 'chern': basestudy = 1; break;
         case 'chist': basestudy = 0.7; break;
         case 'demont': basestudy = 1.05; break;
-		   default: basestudy = 1;
+		   default: basestudy = 60000;
 	}	  
 	switch(bat) {
         case 'batno': batary = 0; break;
@@ -65,20 +65,27 @@ function calculate() {
 			 default: batary = 0;
 	}	 
 	switch(wall) {
-        case 'oboi': walldecor = area * Hkvar * 300; break;
-        case 'kraska': walldecor = area * Hkvar * 600; break;
-        case 'decor': walldecor = area * Hkvar * 450; break;
-	case 'mixwall': walldecor = area * Hkvar * 420; break;
-			default: walldecor = 0;
+        case 'oboi': walldecor = area*Hkvar*300; break;
+        case 'kraska': walldecor = area*Hkvar*600; break;
+        case 'decor': walldecor = area*Hkvar*450; break;
+	case 'mixwall': walldecor = area*Hkvar*420; break;
+			default: walldecor = area*Hkvar*300;
 	}
         switch(pol) {
-        case 'laminat': poldecor = area * 2000; break;
-        case 'kvarz': poldecor = area * 3200; break;
-        case 'ingener': poldecor = area * 6000; break;
-        case 'massiv': poldecor = area * 8000; break;
-        default: poldecor = 0;
+        case 'laminat': poldecor = area*2000; break;
+        case 'kvarz': poldecor = area*3200; break;
+        case 'ingener': poldecor = area*6000; break;
+        case 'massiv': poldecor = area*8000; break;
+        default: poldecor = area*2000;
     }
+	
+
+
+console.log('wall:', wall, 'pol:', pol, 'area:', area, 'Hkvar:', Hkvar,'bat:',bat, 'poldecor',poldecor, 'walldecor',walldecor);
+
+	
     let total = (baseCost * area * basestudy) + batary + walldecor + poldecor;
+
     if (document.getElementById('kond').checked) total += area/30*50000;
 	if (document.getElementById('prit').checked) total += (area/100*10)+400000;
 	if (document.getElementById('nat').checked) total += area*1500;
@@ -130,6 +137,8 @@ function resetForm() {
     // Переход на первую страницу
     goToPage(1);
 }
+
+ 
 //stady
 // chern - черновой
 //chist - чистовой
