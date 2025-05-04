@@ -1,16 +1,11 @@
- @media (max-width: 600px) {
-         input, select, button {
-             width: 100%; /* Полная ширина на узких экранах */
-         }
-     }
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
     background-image: url("../img/bg-01.jpg");
-    background-size: cover; /* Лучше для адаптивности */
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    min-height: 100vh; /* Гарантирует покрытие всей высоты */
+    min-height: 100vh;
 }
 
 h1 {
@@ -20,7 +15,7 @@ h1 {
 .main-container {
     display: flex;
     width: 100%;
-    flex-direction: column; /* Для мобильных устройств */
+    flex-direction: column;
 }
 
 .page {
@@ -33,8 +28,8 @@ h1 {
 
 button {
     height: 40px;
-    border: 2px solid #000; /* Исправлен '40x' и цвет */
-    width: 200px; /* Добавлены единицы */
+    border: 2px solid #000;
+    width: 200px;
     background-color: #EFEDEC;
     color: #000;
     font-weight: 400;
@@ -42,36 +37,70 @@ button {
     padding: 5px;
     border-radius: 20px;
     cursor: pointer;
-    line-height: normal; /* Исправлено */
-    font-family: 'Tuffy', Arial, sans-serif; /* Fallback шрифт */
+    line-height: normal;
+    font-family: 'Tuffy', Arial, sans-serif;
 }
 
-input {
-    height: 40px; /* Исправлено '10x', увеличено для удобства */
-    border: 1px solid #000; /* Исправлен цвет */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: white;
+    border: 1px solid #000;
+    border-radius: 4px;
+    outline: none;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #000;
+    border: 1px solid #000;
+}
+
+label {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 30px);
+}
+
+input[type="checkbox"] + label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+input:not([type="checkbox"]) {
+    height: 40px;
+    border: 1px solid #000;
     width: 30%;
-    background-color: #fff; /* Исправлен фон, #00000 делал нечитаемым */
+    background-color: #fff;
     color: #000;
-    font-weight: normal; /* Исправлено числовое значение */
+    font-weight: normal;
     font-size: 20px;
-    padding: 5px; /* Увеличен padding */
+    padding: 5px;
     border-radius: 20px;
-    cursor: text; /* Подходит для input */
-    line-height: normal; /* Исправлено */
+    cursor: text;
+    line-height: normal;
     font-family: 'Tuffy', Arial, sans-serif;
 }
 
 select {
-    height: 40px; /* Исправлено '30x' */
-    border: 2px solid #0034ff; /* Исправлен цвет */
+    height: 40px;
+    border: 2px solid #0034ff;
     width: 40%;
-    background-color: #fff; /* Исправлен фон */
+    background-color: #fff;
     color: #000;
     font-weight: 200;
     font-size: 20px;
     padding: 5px;
     border-radius: 20px;
     cursor: pointer;
-    line-height: normal; /* Исправлено */
+    line-height: normal;
     font-family: 'Tuffy', Arial, sans-serif;
 }
