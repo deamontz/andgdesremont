@@ -71,7 +71,7 @@ function calculate() {
 	case 'mixwall': walldecor = area*Hkvar*420; break;
 			default: walldecor = 0;
 	}
-        switch(inputs.pol) {
+        switch(pol) {
         case 'laminat': poldecor = area*2000; break;
         case 'kvarz': poldecor = area*3200; break;
         case 'ingener': poldecor = area*6000; break;
