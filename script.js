@@ -57,13 +57,13 @@ function calculate() {
         case 'batno': batary = 0; break;
         case 'batnew': batary = area/12*10000; break;
         case 'batdes': batary = area/12*40000; break;
-	}	 
-	switch(wall) {
-        case 'oboi': walldecor = area*Hkvar*300; break;
-        case 'kraska': walldecor = area*Hkvar*600; break;
-        case 'decor': walldecor = area*Hkvar*450; break;
-		case 'mixwall': walldecor = area*Hkvar*420; break;	
-	}
+	}	
+	  switch(wall) {
+       case 'oboi': walldecor = area * Hkvar * 300; break;
+       case 'kraska': walldecor = area * Hkvar * 600; break;
+       case 'decor': walldecor = area * Hkvar * 450; break;
+       case 'mixwall': walldecor = area * Hkvar * 420; break;  
+   }	
 	switch(pol) {
         case 'laminat': poldecor += area*2000; break;
         case 'kvarz': poldecor += area*3200; break;
