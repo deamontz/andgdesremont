@@ -1,4 +1,6 @@
-document.activeElement.blur();
+ document.getElementById('yourInputId').addEventListener('change', function() {
+       this.blur();
+   });
 let currentPage = 1; // Переменная для отслеживания текущей страницы
 
 function goToPage(pageNumber) {
