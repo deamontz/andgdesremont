@@ -16,10 +16,10 @@ function calculate() {
     if (isNaN(area) || area <= 25) {
         area = 25; // Устанавливаем значение по умолчанию 25
     }
-	let Hkvar = parseFloat(document.getElementById('Hkvar').value);
-    if (isNaN(Hkvar) || Hkvar <= 2.4) {
-        Hkvar = 2.4; // Устанавливаем значение по умолчанию 2.4
-    }
+ if (isNaN(Hkvar) || Hkvar <= 2.4) {
+       Hkvar = 2.4; // Устанавливаем значение по умолчанию 2.4
+   }
+   
 	
     let type = document.getElementById('type').value;
 	let study = document.getElementById('study').value;
