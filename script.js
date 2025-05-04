@@ -68,16 +68,16 @@ function calculate() {
         case 'oboi': walldecor = area*Hkvar*300; break;
         case 'kraska': walldecor = area*Hkvar*600; break;
         case 'decor': walldecor = area*Hkvar*450; break;
-		case 'mixwall': walldecor = area*Hkvar*420; break;
+	case 'mixwall': walldecor = area*Hkvar*420; break;
 			default: walldecor = 0;
 	}
-	switch(pol) {
-        case 'laminat': poldecor += area*2000; break;
-        case 'kvarz': poldecor += area*3200; break;
-        case 'ingener': poldecor += area*6000; break;
-		case 'massiv': poldecor += area*8000;break;
-			default: poldecor = 0;
-	}
+        switch(inputs.pol) {
+        case 'laminat': poldecor = area*2000; break;
+        case 'kvarz': poldecor = area*3200; break;
+        case 'ingener': poldecor = area*6000; break;
+        case 'massiv': poldecor = area*8000; break;
+        default: poldecor = 0;
+    }
     let total = (baseCost * area * basestudy) + batary + walldecor + poldecor;
     if (document.getElementById('kond').checked) total += area/30*50000;
 	if (document.getElementById('prit').checked) total += (area/100*10)+400000;
