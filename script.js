@@ -55,23 +55,27 @@ function calculate() {
         case 'chern': basestudy = 1; break;
         case 'chist': basestudy = 0.7; break;
         case 'demont': basestudy = 1.05; break;
+		   default: baseCost = 60000;
 	}	  
 	switch(bat) {
         case 'batno': batary = 0; break;
         case 'batnew': batary = area/12*10000; break;
         case 'batdes': batary = area/12*40000; break;
+			 default: batary = 0;
 	}	 
 	switch(wall) {
         case 'oboi': walldecor = area*Hkvar*300; break;
         case 'kraska': walldecor = area*Hkvar*600; break;
         case 'decor': walldecor = area*Hkvar*450; break;
-		case 'mixwall': walldecor = area*Hkvar*420; break;	
+		case 'mixwall': walldecor = area*Hkvar*420; break;
+			default: walldecor = 0;
 	}
 	switch(pol) {
         case 'laminat': poldecor += area*2000; break;
         case 'kvarz': poldecor += area*3200; break;
         case 'ingener': poldecor += area*6000; break;
 		case 'massiv': poldecor += area*8000;break;
+			default: poldecor = 0;
 	}
     let total = (baseCost * area * basestudy)+ batary;
     if (document.getElementById('kond').checked) total += area/30*50000;
