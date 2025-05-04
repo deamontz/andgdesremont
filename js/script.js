@@ -84,6 +84,34 @@ function calculate() {
 
 // Обработчик события для кнопки
 document.getElementById('calculateButton').onclick = calculate;
+
+function resetForm() {
+    // Сбрасываем все чекбоксы
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = false;
+    });
+
+    // Сбрасываем все радиокнопки
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.checked = false;
+    });
+
+    // Сбрасываем все инпуты (кроме чекбоксов и радиокнопок)
+    document.querySelectorAll('input:not([type="checkbox"]):not([type="radio"])').forEach(input => {
+        input.value = '';
+    });
+
+    // Сбрасываем все селекты
+    document.querySelectorAll('select').forEach(select => {
+        select.selectedIndex = 0;
+    });
+
+    // Сбрасываем результат
+    document.getElementById('result').textContent = '';
+
+    // Переход на первую страницу
+    goToPage(1);
+}
 //stady
 // chern - черновой
 //chist - чистовой
