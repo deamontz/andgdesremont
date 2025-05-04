@@ -48,7 +48,7 @@ function calculate() {
 	
     switch(type) {
         case 'budget': baseCost = 60000; break;
-        case 'standard': baseCost = 120000; break;
+        case 'standard': baseCost = 100000; break;
         case 'premium': baseCost = 200000; break;
 		     default: baseCost = 60000;
     }
