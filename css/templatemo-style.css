@@ -20,12 +20,12 @@ h1 {
 
 .left-side {
     flex: 1;
-	 width: 400px;
+	 width: 100%;
     padding: 20px;
 }
 
 .right-side {
-    width: 30%;
+    width: 200px;
     padding: 20px;
     border-left: 1px solid #514444;
 }
