@@ -70,7 +70,7 @@ function calculate() {
         case 'ingener': poldecor += area*6000; break;
 		case 'massiv': poldecor += area*8000;break;
 	}
-    let total = (baseCost * area * basestudy)+ batary;
+    let total = (baseCost * area * basestudy) + batary + poldecor + walldecor;
     if (document.getElementById('kond').checked) total += area/30*50000;
 	if (document.getElementById('prit').checked) total += (area/100*10)+400000;
 	if (document.getElementById('nat').checked) total += area*1500;
