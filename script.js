@@ -1,15 +1,11 @@
 let currentPage = 1; // Переменная для отслеживания текущей страницы
 
 function goToPage(pageNumber) {
-    // Если переход на первую страницу, сбрасываем активность страницы 5
-    if (pageNumber === 1) {
-        document.getElementById('page5').classList.remove('active');
-    }
-    // Скрываем текущую страницу в левом блоке
+    // Скрываем текущую страницу
     document.getElementById('page' + currentPage).classList.remove('active');
-    // Показываем новую страницу в левом блоке
-    document.getElementById('page' + pageNumber).classList.add('active');
 
+    // Показываем новую страницу
+    document.getElementById('page' + pageNumber).classList.add('active');
 
     // Обновляем текущую страницу
     currentPage = pageNumber;
@@ -119,9 +115,6 @@ function resetForm() {
 
     // Сбрасываем результат
     document.getElementById('result').textContent = '';
-
-    // Скрываем последнюю страницу
-    document.getElementById('page5').classList.remove('active');
 
     // Переход на первую страницу
     goToPage(1);

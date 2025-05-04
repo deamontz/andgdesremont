@@ -1,22 +1,27 @@
+ @media (max-width: 600px) {
+         input, select, button {
+             width: 100%; /* Полная ширина на узких экранах */
+         }
+     }
 body {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     padding: 20px;
-  background-image: url("../img/bg-01.jpg");
-	background-size: 100% auto; /* Изображение растягивается по ширине, высота автоматически */
+    background-image: url("../img/bg-01.jpg");
+    background-size: cover; /* Лучше для адаптивности */
     background-repeat: no-repeat;
     background-position: center;
+    min-height: 100vh; /* Гарантирует покрытие всей высоты */
 }
 
-
 h1 {
-    color: #000000;
+    color: #000;
 }
 
 .main-container {
     display: flex;
     width: 100%;
+    flex-direction: column; /* Для мобильных устройств */
 }
-
 
 .page {
     display: none;
@@ -26,42 +31,47 @@ h1 {
     display: block;
 }
 
-button {height: 50px;
-	  border: 40x solid #00000;
-width: 40%;
-background-color: #EFEDEC;
-color: #000000;
-font-weight: 400;
-font-size: 20px;
-padding: 5px;
-border-radius: 20px;
-cursor: pointer;
-line-height:0px;
-font-family: Tuffy;}
+button {
+    height: 40px;
+    border: 2px solid #000; /* Исправлен '40x' и цвет */
+    width: 200px; /* Добавлены единицы */
+    background-color: #EFEDEC;
+    color: #000;
+    font-weight: 400;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    line-height: normal; /* Исправлено */
+    font-family: 'Tuffy', Arial, sans-serif; /* Fallback шрифт */
+}
 
-input {height: 10x;
-	  border: 1px solid #00000;
-width: 30%;
-background-color: #00000;
-color: #000000;
-font-weight: 20
-font-size: 20px;
-padding: 2px;
-border-radius: 20px;
-cursor: pointer;
-line-height:10px;
-font-family: Tuffy;}
+input {
+    height: 40px; /* Исправлено '10x', увеличено для удобства */
+    border: 1px solid #000; /* Исправлен цвет */
+    width: 30%;
+    background-color: #fff; /* Исправлен фон, #00000 делал нечитаемым */
+    color: #000;
+    font-weight: normal; /* Исправлено числовое значение */
+    font-size: 20px;
+    padding: 5px; /* Увеличен padding */
+    border-radius: 20px;
+    cursor: text; /* Подходит для input */
+    line-height: normal; /* Исправлено */
+    font-family: 'Tuffy', Arial, sans-serif;
+}
 
-select {height: 30x;
-	  border: 4px solid #00340;
-width: 40%;
-background-color: #00000;
-color: #000000;
-font-weight: 200;
-font-size: 20px;
-padding: 5px;
-border-radius: 20px;
-cursor: pointer;
-line-height:0px;
-font-family: Tuffy;}
-
+select {
+    height: 40px; /* Исправлено '30x' */
+    border: 2px solid #0034ff; /* Исправлен цвет */
+    width: 40%;
+    background-color: #fff; /* Исправлен фон */
+    color: #000;
+    font-weight: 200;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    line-height: normal; /* Исправлено */
+    font-family: 'Tuffy', Arial, sans-serif;
+}
