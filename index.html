@@ -13,6 +13,7 @@
               <div class="tm-page-content-width tm-padding-b">
                     <div class="text-center tm-site-title-wrap">
                         <h1 class="tm-site-title"><strong>Калькулятор ремонта</strong></h1>
+			    <br>
 </div> 
 				  </div> 
 			</div> 
@@ -21,9 +22,11 @@
         <h2>Шаг 1: Укажите площадь квартиры</h2>
         <label>Площадь (м²):</label>
         <input type="number" id="area" placeholder="Введите площадь">
+	    <br>
         <h2>Укажите высоту потолков</h2>
         <label>Высота (м):</label>
         <input type="number" id="Hkvar" placeholder="Введите высоту">
+	    <br>
         <h2>Уровень ремонта</h2>
         <label>Укажите бюджет:</label>
         <select id="type">
@@ -31,6 +34,7 @@
             <option value="standard">Стандартный</option>
             <option value="premium">Премиум</option>
         </select>
+	    <br>
         <h2>Стадия помещения для ремонта</h2>
         <label>Состояние помещения:</label>
         <select id="study">
@@ -39,18 +43,21 @@
             <option value="demont">Демонтаж</option>
         </select>
         <br>
+	    <br>
         <button onclick="goToPage(2)">Далее</button>
     </div>
         <!-- Страница 2: Тип ремонта -->
     <div id="page2" class="page">
         <h2>Шаг 2: Отопление, кондиционирование, вода</h2>
-		<h3> Кондиционирование</h3>
+		<h2> Кондиционирование</h3>
 		<label><input type="checkbox" id="kond"> Настенные кондиционеры </label><br>
 		<label><input type="checkbox" id="prit"> Приточная вентиляция</label><br>
+	    <br>
 		<h3> Узел водоснабжения</h3>
 		<label><input type="checkbox" id="waterst"> Фильтрация, редукторы давления </label><br>
 		<label><input type="checkbox" id="waterprem"> Сборный узел + защита от протечек</label><br>
-		<h3> Отопление</h3>
+	    <br>
+		<h2> Отопление</h3>
 		<label>Батареи:</label>
 		<select id="bat">
           <option value="batno">Без замены</option>
@@ -89,17 +96,18 @@
 		   <!-- Страница 4: Мебель и доп функции -->
     <div id="page4" class="page">
         <h2>Шаг 4: Мебель и доп опции</h2>
-		<h3> Мебель под заказ</h3> <br>
+		<h2> Мебель под заказ</h3> <br>
         <label><input type="checkbox" id="kuchnya"> Кухонный гарнитур</label><br>
         <label><input type="checkbox" id="bedroom"> Мебель в спальню</label><br>
 	    <label><input type="checkbox" id="sanusel"> Мебель в сан. узел</label><br>
         <label><input type="checkbox" id="anoroom"> Мебель в другие помещения</label><br>
-		<h3> Дополнительные опции</h3> <br>
+	    <br>
+		<h2> Дополнительные опции</h3> <br>
         <label><input type="checkbox" id="curtain"> Шторы под заказ</label><br>
         <label><input type="checkbox" id="plaster"> Карнизы, молдинги</label><br>
         <label><input type="checkbox" id="decorwall"> Другие декоративные покрытия</label><br>
         <label><input type="checkbox" id="smarthome">"Умный дом"</label><br>
-        
+        <br>
         <button onclick="calculate()">Рассчитать</button>
     </div>
 	    <!-- Страница 5: Результат -->
