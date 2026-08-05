@@ -254,7 +254,27 @@ function showFavorites() {
     });
     alert(msg);
 }
-
+function saveAsJPG() {
+    const element = document.getElementById('result');
+    if (!element || !element.innerText.trim()) {
+        alert('Сначала рассчитайте смету!');
+        return;
+    }
+    html2canvas(element, {
+        scale: 2, // качество
+        backgroundColor: '#ffffff',
+        allowTaint: false,
+        useCORS: true
+    }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `смета_${new Date().toISOString().slice(0,10)}.jpg`;
+        link.href = canvas.toDataURL('image/jpeg', 0.9);
+        link.click();
+    }).catch(error => {
+        console.error('Ошибка сохранения:', error);
+        alert('Не удалось сохранить изображение. Попробуйте скопировать текст.');
+    });
+}
 //stady
 // chern - черновой
 //chist - чистовой
