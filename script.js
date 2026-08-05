@@ -34,8 +34,9 @@ function calculate() {
     let prit = document.getElementById('prit').checked;
     let waterst = document.getElementById('waterst').checked;
     let waterprem = document.getElementById('waterprem').checked;
-    let nat = document.getElementById('nat').checked;
-    let gips = document.getElementById('gips').checked;
+    let potolok = document.querySelector('input[name="potolok"]:checked');
+let nat = potolok && potolok.value === 'nat';
+let gips = potolok && potolok.value === 'gips';
     let kuchnya = document.getElementById('kuchnya').checked;
     let sanusel = document.getElementById('sanusel').checked;
     let bedroom = document.getElementById('bedroom').checked;
