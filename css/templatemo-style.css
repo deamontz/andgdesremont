@@ -1,106 +1,160 @@
+/* ===== ПОДКЛЮЧЕНИЕ ШРИФТА ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ===== ГЛОБАЛЬНЫЕ ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
+    background: #ffffff;              /* белый фон */
     padding: 20px;
-    background-image: url("../img/bg-01.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     min-height: 100vh;
 }
 
+h1, h2, h3 {
+    color: #0b1a33;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
 h1 {
-    color: #000;
+    font-size: 28px;
+    margin-bottom: 6px;
 }
 
-.main-container {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
+h2 {
+    font-size: 20px;
+    margin: 20px 0 12px;
 }
 
+/* ===== СТРАНИЦЫ ===== */
 .page {
     display: none;
 }
-
 .page.active {
     display: block;
 }
 
-button {
-    height: 40px;
-    border: 2px solid #000;
-    width: 300px;
-    background-color: #EFEDEC;
-    color: #000;
-    font-weight: 400;
-    font-size: 20px;
-    padding: 5px;
-    border-radius: 20px;
-    cursor: pointer;
-    line-height: normal;
-    font-family: 'Tuffy', Arial, sans-serif;
+/* ===== ПОЛЯ ВВОДА И СЕЛЕКТЫ ===== */
+input:not([type="checkbox"]),
+select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #dce0e6;
+    border-radius: 14px;
+    font-size: 16px;
+    background: #f8f9fb;
+    transition: 0.2s;
+    font-family: inherit;
+    margin-bottom: 14px;
 }
 
-input[type="checkbox"] {
-    width: 15px;
-    height: 15px;
-    appearance: none;
-    appearance: none;
-    background-color: white;
-    border: 1px solid #000;
-    border-radius: 4px;
+input:not([type="checkbox"]):focus,
+select:focus {
     outline: none;
-    vertical-align: middle;
-    margin-right: 10px;
+    border-color: #1a2a4a;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(26, 42, 74, 0.15);
 }
 
-input[type="checkbox"]:checked {
-    background-color: #000;
-    border: 1px solid #000;
+/* ===== ЧЕКБОКСЫ ===== */
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #1a2a4a;
+    margin-right: 8px;
+    cursor: pointer;
 }
 
-label {
+/* ===== КНОПКИ ===== */
+button, .btn {
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    border-radius: 40px;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: all 0.25s ease;
     display: inline-flex;
     align-items: center;
-    font-size: 14px;
-    font-family: Arial, sans-serif;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: calc(100% - 50px);
+    justify-content: center;
+    text-align: center;
+    line-height: 1.2;
 }
 
-input[type="checkbox"] + label {
-    margin-bottom: 10px;
-    display: block;
+/* --- Ваш класс .btn-add (оставляем как есть, но добавляем анимацию) --- */
+.btn-add {
+    background-color: #1a2a4a;
+    border-color: #1a2a4a;
+    color: #fff;
+    width: 200px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.15s;
+}
+.btn-add:hover {
+    background-color: #2a3a5a;   /* чуть светлее при наведении */
+    border-color: #2a3a5a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 42, 74, 0.3);
+}
+.btn-add:active {
+    transform: translateY(0);
 }
 
-input:not([type="checkbox"]) {
-    height:50px;
-    border: 1px solid #000;
-    width: 90%;
-    background-color: #fff;
-    color: #000;
-    font-weight: normal;
-    font-size: 20px;
-    padding: 5px;
+/* --- Кнопки по умолчанию (если нет класса) --- */
+button:not(.btn-add) {
+    background: #1a2a4a;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 12px rgba(26, 42, 74, 0.25);
+}
+button:not(.btn-add):hover {
+    background: #2a3a5a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(26, 42, 74, 0.35);
+}
+button:not(.btn-add):active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(26, 42, 74, 0.2);
+}
+
+/* ===== РЕЗУЛЬТАТ (если нужен) ===== */
+.result-block {
+    background: #f8fafc;
     border-radius: 20px;
-    cursor: text;
-    line-height: normal;
-    font-family: 'Tuffy', Arial, sans-serif;
+    padding: 20px;
+    margin-top: 20px;
 }
 
-select {
-    height: 50px;
-    border: 1px solid #000000;
-    width: 90%;
-    background-color: #fff;
-    color: #000;
-    font-weight: 200;
-    font-size: 20px;
-    padding: 5px;
-    border-radius: 20px;
-    cursor: pointer;
-    line-height: normal;
-    font-family: 'Tuffy', Arial, sans-serif;
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+.result-row:last-child {
+    border-bottom: none;
+}
+
+.result-total {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0b1a33;
+    margin-top: 12px;
+}
+
+/* ===== ОПЦИОНАЛЬНО: адаптив ===== */
+@media (max-width: 600px) {
+    body { padding: 12px; }
+    .btn-add { width: 100%; }
 }
