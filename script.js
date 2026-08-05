@@ -43,8 +43,12 @@ function calculate() {
     let decorwall = document.getElementById('decorwall').checked;
     let plaster = document.getElementById('plaster').checked;
     let smarthome = document.getElementById('smarthome').checked;
-
 	let baseCost, basestudy, batary, walldecor, poldecor;
+	let worksCost = 0;      // Работы
+	let materialsCost = 0;  // Материалы (стены, пол)
+	let optionsCost = 0;    // Опции (батареи, кондиционер, вода, потолки)
+	let furnitureCost = 0;  // Мебель
+	let extraCost = 0;      // Дополнительные опции (шторы, гипс, умный дом)
 	
     switch(type) {
         case 'budget': baseCost = 60000; break;
@@ -84,7 +88,10 @@ function calculate() {
 console.log('wall:', wall, 'pol:', pol, 'area:', area, 'Hkvar:', Hkvar,'bat:',bat, 'poldecor',poldecor, 'walldecor',walldecor);
 
 	
-    let total = (baseCost * area * basestudy) + batary + walldecor + poldecor;
+    worksCost = baseCost * area * basestudy;   // это работы
+	materialsCost = walldecor + poldecor;      // стены + пол
+	optionsCost = batary;                      // батареи — это опция
+	let total = worksCost + materialsCost + optionsCost;
 
     if (document.getElementById('kond').checked) total += area/30*50000;
 	if (document.getElementById('prit').checked) total += (area/100*10)+400000;
@@ -100,7 +107,34 @@ console.log('wall:', wall, 'pol:', pol, 'area:', area, 'Hkvar:', Hkvar,'bat:',ba
     if (document.getElementById('smarthome').checked) total += (1000 * area + 300000);
 	total = Math.round(total / 100) * 100;
            let formattedTotal = total.toLocaleString('ru-RU');
-           document.getElementById('result').innerHTML = `Стоимость ремонта ${formattedTotal} руб.`;
+          let resultHTML = `
+    <div style="background:#f8fafc; padding:20px; border-radius:20px; margin-top:20px;">
+        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+            <span>🔨 Работы</span>
+            <span>${Math.round(worksCost).toLocaleString('ru-RU')} ₽</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+            <span>📦 Материалы (стены + пол)</span>
+            <span>${Math.round(materialsCost).toLocaleString('ru-RU')} ₽</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+            <span>🛠 Опции (батареи, кондиционер, вода, потолки)</span>
+            <span>${Math.round(optionsCost).toLocaleString('ru-RU')} ₽</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+            <span>🛋 Мебель</span>
+            <span>${Math.round(furnitureCost).toLocaleString('ru-RU')} ₽</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+            <span>✨ Дополнительные опции</span>
+            <span>${Math.round(extraCost).toLocaleString('ru-RU')} ₽</span>
+        </div>
+        <div style="font-size:24px; font-weight:700; margin-top:12px; border-top:2px solid #dce0e6; padding-top:12px;">
+            💰 Итого: ${Math.round(total).toLocaleString('ru-RU')} ₽
+        </div>
+    </div>
+`;
+document.getElementById('result').innerHTML = resultHTML;
     goToPage(5);
 }
 
