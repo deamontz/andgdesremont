@@ -261,7 +261,7 @@ function saveAsJPG() {
         return;
     }
     html2canvas(element, {
-        scale: 2, // качество
+        scale: 2,
         backgroundColor: '#ffffff',
         allowTaint: false,
         useCORS: true
