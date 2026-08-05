@@ -15,126 +15,187 @@ function goToPage(pageNumber) {
 }
 
 function calculate() {
-   let area = parseFloat(document.getElementById('area').value);
+    let area = parseFloat(document.getElementById('area').value);
     if (isNaN(area) || area <= 25) {
         area = 25; // Устанавливаем значение по умолчанию 25
     }
-	let Hkvar = parseFloat(document.getElementById('Hkvar').value);
+    let Hkvar = parseFloat(document.getElementById('Hkvar').value);
     if (isNaN(Hkvar) || Hkvar <= 2.4) {
         Hkvar = 2.4; // Устанавливаем значение по умолчанию 2.4
     }
-	
+    
     let type = document.getElementById('type').value;
-	let study = document.getElementById('study').value;
-	let bat = document.getElementById('bat').value;
-	let kond = document.getElementById('kond').checked;
+    let study = document.getElementById('study').value;
+    let bat = document.getElementById('bat').value;
+    let wall = document.getElementById('wall').value;
+    let pol = document.getElementById('pol').value;
+
+    let kond = document.getElementById('kond').checked;
     let prit = document.getElementById('prit').checked;
     let waterst = document.getElementById('waterst').checked;
     let waterprem = document.getElementById('waterprem').checked;
-   	let wall = document.getElementById('wall').value;
-	let pol = document.getElementById('pol').value;
     let nat = document.getElementById('nat').checked;
     let gips = document.getElementById('gips').checked;
     let kuchnya = document.getElementById('kuchnya').checked;
-	let sanusel = document.getElementById('sanusel').checked;
-	let bedroom = document.getElementById('bedroom').checked;
-	let anoroom = document.getElementById('anoroom').checked;
-	let curnain = document.getElementById('curtain').checked;
+    let sanusel = document.getElementById('sanusel').checked;
+    let bedroom = document.getElementById('bedroom').checked;
+    let anoroom = document.getElementById('anoroom').checked;
+    let curtain = document.getElementById('curtain').checked;
     let decorwall = document.getElementById('decorwall').checked;
     let plaster = document.getElementById('plaster').checked;
     let smarthome = document.getElementById('smarthome').checked;
-	let baseCost, basestudy, batary, walldecor, poldecor;
-	let worksCost = 0;      // Работы
-	let materialsCost = 0;  // Материалы (стены, пол)
-	let optionsCost = 0;    // Опции (батареи, кондиционер, вода, потолки)
-	let furnitureCost = 0;  // Мебель
-	let extraCost = 0;      // Дополнительные опции (шторы, гипс, умный дом)
-	
+
+    let baseCost, basestudy, batary, walldecor, poldecor;
+    let worksCost = 0;      // Работы
+    let materialsCost = 0;  // Материалы (стены, пол)
+    let optionsCost = 0;    // Опции (батареи, кондиционер, вода, потолки)
+    let furnitureCost = 0;  // Мебель
+    let extraCost = 0;      // Дополнительные опции (шторы, гипс, умный дом)
+    
     switch(type) {
         case 'budget': baseCost = 60000; break;
         case 'standard': baseCost = 100000; break;
         case 'premium': baseCost = 200000; break;
-		     default: baseCost = 60000;
+        default: baseCost = 60000;
     }
-  switch(study) {
+    switch(study) {
         case 'chern': basestudy = 1; break;
         case 'chist': basestudy = 0.7; break;
         case 'demont': basestudy = 1.05; break;
-		   default: basestudy = 60000;
-	}	  
-	switch(bat) {
+        default: basestudy = 1;
+    }      
+    switch(bat) {
         case 'batno': batary = 0; break;
         case 'batnew': batary = area/12*10000; break;
         case 'batdes': batary = area/12*40000; break;
-			 default: batary = 0;
-	}	 
-	switch(wall) {
+        default: batary = 0;
+    }     
+    switch(wall) {
         case 'oboi': walldecor = area*Hkvar*300; break;
         case 'kraska': walldecor = area*Hkvar*600; break;
         case 'decor': walldecor = area*Hkvar*450; break;
-	case 'mixwall': walldecor = area*Hkvar*420; break;
-			default: walldecor = area*Hkvar*300;
-	}
-        switch(pol) {
+        case 'mixwall': walldecor = area*Hkvar*420; break;
+        default: walldecor = area*Hkvar*300;
+    }
+    switch(pol) {
         case 'laminat': poldecor = area*2000; break;
         case 'kvarz': poldecor = area*3200; break;
         case 'ingener': poldecor = area*6000; break;
         case 'massiv': poldecor = area*8000; break;
         default: poldecor = area*2000;
     }
-	
 
-
-console.log('wall:', wall, 'pol:', pol, 'area:', area, 'Hkvar:', Hkvar,'bat:',bat, 'poldecor',poldecor, 'walldecor',walldecor);
-
-	
     worksCost = baseCost * area * basestudy;   // это работы
-	materialsCost = walldecor + poldecor;      // стены + пол
-	optionsCost = batary;                      // батареи — это опция
-	let total = worksCost + materialsCost + optionsCost;
+    materialsCost = walldecor + poldecor;      // стены + пол
+    optionsCost = batary;                      // батареи — это опция
+    let total = worksCost + materialsCost + optionsCost;
 
-    if (document.getElementById('kond').checked) total += area/30*50000;
-	if (document.getElementById('prit').checked) total += (area/100*10)+400000;
-	if (document.getElementById('nat').checked) total += area*1500;
-	if (document.getElementById('gips').checked) total += area*3000;
-    if (document.getElementById('kuchnya').checked) total += area/10*100000*baseCost/60000;
-	if (document.getElementById('sanusel').checked) total += area/10*100000*baseCost/60000;
-	if (document.getElementById('bedroom').checked) total += area/10*50000*baseCost/60000;
-	if (document.getElementById('anoroom').checked) total += area/10*50000*baseCost/60000;
-    if (document.getElementById('curtain').checked) total += 5000 * area*baseCost/60000;
-    if (document.getElementById('plaster').checked) total += 800 * area*baseCost/60000;
-	if (document.getElementById('decorwall').checked) total += 800 * area*baseCost/60000;
-    if (document.getElementById('smarthome').checked) total += (1000 * area + 300000);
-	total = Math.round(total / 100) * 100;
-           let formattedTotal = total.toLocaleString('ru-RU');
-          let resultHTML = `
-    <div style="background:#f8fafc; padding:20px; border-radius:20px; margin-top:20px;">
-        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-            <span>🔨 Работы</span>
-            <span>${Math.round(worksCost).toLocaleString('ru-RU')} ₽</span>
+    // Опции
+    if (kond) {
+        let sum = area/30*50000;
+        total += sum;
+        optionsCost += sum;
+    }
+    if (prit) {
+        let sum = (area/100*10)+400000;
+        total += sum;
+        optionsCost += sum;
+    }
+    if (waterst) {
+        let sum = 15000;
+        total += sum;
+        optionsCost += sum;
+    }
+    if (waterprem) {
+        let sum = 30000;
+        total += sum;
+        optionsCost += sum;
+    }
+    if (nat) {
+        let sum = area*1500;
+        total += sum;
+        optionsCost += sum;
+    }
+    if (gips) {
+        let sum = area*3000;
+        total += sum;
+        optionsCost += sum;
+    }
+
+    // Мебель
+    if (kuchnya) {
+        let sum = area/10*100000*baseCost/60000;
+        total += sum;
+        furnitureCost += sum;
+    }
+    if (sanusel) {
+        let sum = area/10*100000*baseCost/60000;
+        total += sum;
+        furnitureCost += sum;
+    }
+    if (bedroom) {
+        let sum = area/10*50000*baseCost/60000;
+        total += sum;
+        furnitureCost += sum;
+    }
+    if (anoroom) {
+        let sum = area/10*50000*baseCost/60000;
+        total += sum;
+        furnitureCost += sum;
+    }
+
+    // Дополнительные опции
+    if (curtain) {
+        let sum = 5000 * area*baseCost/60000;
+        total += sum;
+        extraCost += sum;
+    }
+    if (plaster) {
+        let sum = 800 * area*baseCost/60000;
+        total += sum;
+        extraCost += sum;
+    }
+    if (decorwall) {
+        let sum = 800 * area*baseCost/60000;
+        total += sum;
+        extraCost += sum;
+    }
+    if (smarthome) {
+        let sum = (1000 * area + 300000);
+        total += sum;
+        extraCost += sum;
+    }
+
+    total = Math.round(total / 100) * 100;
+
+    let resultHTML = `
+        <div style="background:#f8fafc; padding:20px; border-radius:20px; margin-top:20px;">
+            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+                <span>🔨 Работы</span>
+                <span>${Math.round(worksCost).toLocaleString('ru-RU')} ₽</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+                <span>📦 Материалы (стены + пол)</span>
+                <span>${Math.round(materialsCost).toLocaleString('ru-RU')} ₽</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+                <span>🛠 Опции (батареи, кондиционер, вода, потолки)</span>
+                <span>${Math.round(optionsCost).toLocaleString('ru-RU')} ₽</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+                <span>🛋 Мебель</span>
+                <span>${Math.round(furnitureCost).toLocaleString('ru-RU')} ₽</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+                <span>✨ Дополнительные опции</span>
+                <span>${Math.round(extraCost).toLocaleString('ru-RU')} ₽</span>
+            </div>
+            <div style="font-size:24px; font-weight:700; margin-top:12px; border-top:2px solid #dce0e6; padding-top:12px;">
+                💰 Итого: ${Math.round(total).toLocaleString('ru-RU')} ₽
+            </div>
         </div>
-        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-            <span>📦 Материалы (стены + пол)</span>
-            <span>${Math.round(materialsCost).toLocaleString('ru-RU')} ₽</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-            <span>🛠 Опции (батареи, кондиционер, вода, потолки)</span>
-            <span>${Math.round(optionsCost).toLocaleString('ru-RU')} ₽</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-            <span>🛋 Мебель</span>
-            <span>${Math.round(furnitureCost).toLocaleString('ru-RU')} ₽</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-            <span>✨ Дополнительные опции</span>
-            <span>${Math.round(extraCost).toLocaleString('ru-RU')} ₽</span>
-        </div>
-        <div style="font-size:24px; font-weight:700; margin-top:12px; border-top:2px solid #dce0e6; padding-top:12px;">
-            💰 Итого: ${Math.round(total).toLocaleString('ru-RU')} ₽
-        </div>
-    </div>
-`;
-document.getElementById('result').innerHTML = resultHTML;
+    `;
+    document.getElementById('result').innerHTML = resultHTML;
     goToPage(5);
 }
 
@@ -171,6 +232,7 @@ function resetForm() {
     // Переход на первую страницу
     goToPage(1);
 }
+
 // Сохранение в избранное
 function saveFavorite() {
     const text = document.getElementById('result').innerText;
@@ -191,7 +253,7 @@ function showFavorites() {
     });
     alert(msg);
 }
- 
+
 //stady
 // chern - черновой
 //chist - чистовой
