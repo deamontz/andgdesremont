@@ -58,6 +58,7 @@ function calculate() {
         case 'premium': baseCost = 200000; break;
         default: baseCost = 60000;
     }
+
     switch(study) {
         case 'chern': basestudy = 1; break;
         case 'chist': basestudy = 0.7; break;
@@ -224,7 +225,7 @@ function resetForm() {
     });
 
     // Сбрасываем результат
-    document.getElementById('result').textContent = '';
+    document.getElementById('result').innerHTML = '';
 
     // Скрываем последнюю страницу
     document.getElementById('page5').classList.remove('active');
