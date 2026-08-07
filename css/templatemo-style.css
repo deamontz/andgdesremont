@@ -191,3 +191,36 @@ input[type="radio"]:checked {
     color: #6b7a8f;
     margin: -5px 0 12px 0;
 }
+.result-container {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+.result-object {
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: #1e2a3a;
+    border-bottom: 1px solid #dce0e6;
+    padding-bottom: 12px;
+}
+.result-object strong {
+    font-weight: 600;
+}
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+.result-row:last-child {
+    border-bottom: none;
+}
+.result-total {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0b1a33;
+    margin-top: 12px;
+    border-top: 2px solid #dce0e6;
+    padding-top: 12px;
+}
