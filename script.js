@@ -173,7 +173,7 @@ let gips = potolok && potolok.value === 'gips';
 let resultHTML = `
     <div class="result-container">
         <div class="result-object">
-            <strong>📐 Результат для объекта:</strong><br>
+            <strong>Результат для объекта:</strong><br>
             Площадь: ${area} м² &nbsp;|&nbsp; Высота потолка: ${Hkvar} м<br>
             Уровень ремонта: ${type === 'budget' ? 'Бюджетный' : type === 'standard' ? 'Стандартный' : 'Премиум'} &nbsp;|&nbsp; Состояние: ${study === 'chern' ? 'Черновой' : study === 'chist' ? 'Чистовой' : 'Демонтаж'}
         </div>
