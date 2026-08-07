@@ -173,8 +173,7 @@ function calculate() {
     // Формируем результат с параметрами объекта (инлайн-стили)
     let paramsBlock = `
         <div style="margin-bottom:16px; font-size:15px; color:#1e2a3a; border-bottom:1px solid #dce0e6; padding-bottom:12px;">
-            <strong>Результат для объекта:</strong><br>
-            Площадь: ${area} м² &nbsp;|&nbsp; Высота потолка: ${Hkvar} м<br>
+                       Площадь: ${area} м² &nbsp;|&nbsp; Высота потолка: ${Hkvar} м<br>
             Уровень ремонта: ${type === 'budget' ? 'Бюджетный' : type === 'standard' ? 'Стандартный' : 'Премиум'} &nbsp;|&nbsp; Состояние: ${study === 'chern' ? 'Черновой' : study === 'chist' ? 'Чистовой' : 'Демонтаж'}
         </div>
     `;
@@ -209,7 +208,7 @@ function calculate() {
     `;
     document.getElementById('result').innerHTML = resultHTML;
     goToPage(5);
-}  // <--- ВОТ ЭТА СКОБКА БЫЛА ПРОПУЩЕНА
+}  
 
 // Обработчик события для кнопки
 document.getElementById('calculateButton').onclick = calculate;
@@ -243,26 +242,6 @@ function resetForm() {
 
     // Переход на первую страницу
     goToPage(1);
-}
-
-// Сохранение в избранное (если нужно)
-function saveFavorite() {
-    const text = document.getElementById('result').innerText;
-    if (!text) { alert('Сначала рассчитайте!'); return; }
-    let favs = JSON.parse(localStorage.getItem('favs') || '[]');
-    favs.push({ date: new Date().toLocaleString(), data: text });
-    localStorage.setItem('favs', JSON.stringify(favs));
-    alert('⭐ Сохранено!');
-}
-
-function showFavorites() {
-    const favs = JSON.parse(localStorage.getItem('favs') || '[]');
-    if (!favs.length) { alert('Нет сохранённых смет.'); return; }
-    let msg = '📂 Ваши сметы:\n\n';
-    favs.forEach((item, i) => {
-        msg += `${i+1}. ${item.date}\n${item.data}\n\n`;
-    });
-    alert(msg);
 }
 
 //stady
