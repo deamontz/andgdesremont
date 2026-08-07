@@ -35,8 +35,8 @@ function calculate() {
     let waterst = document.getElementById('waterst').checked;
     let waterprem = document.getElementById('waterprem').checked;
     let potolok = document.querySelector('input[name="potolok"]:checked');
-let nat = potolok && potolok.value === 'nat';
-let gips = potolok && potolok.value === 'gips';
+    let nat = potolok && potolok.value === 'nat';
+    let gips = potolok && potolok.value === 'gips';
     let kuchnya = document.getElementById('kuchnya').checked;
     let sanusel = document.getElementById('sanusel').checked;
     let bedroom = document.getElementById('bedroom').checked;
@@ -170,41 +170,47 @@ let gips = potolok && potolok.value === 'gips';
 
     total = Math.round(total / 100) * 100;
 
-let resultHTML = `
-    <div class="result-container">
-        <div class="result-object">
+    // Формируем результат с параметрами объекта (инлайн-стили)
+    let paramsBlock = `
+        <div style="margin-bottom:16px; font-size:15px; color:#1e2a3a; border-bottom:1px solid #dce0e6; padding-bottom:12px;">
             <strong>Результат для объекта:</strong><br>
             Площадь: ${area} м² &nbsp;|&nbsp; Высота потолка: ${Hkvar} м<br>
             Уровень ремонта: ${type === 'budget' ? 'Бюджетный' : type === 'standard' ? 'Стандартный' : 'Премиум'} &nbsp;|&nbsp; Состояние: ${study === 'chern' ? 'Черновой' : study === 'chist' ? 'Чистовой' : 'Демонтаж'}
         </div>
-        <div class="result-row">
-            <span>Работы</span>
-            <span>${Math.round(worksCost).toLocaleString('ru-RU')} ₽</span>
+    `;
+
+    let resultHTML = `
+        <div style="background:#f8fafc; padding:20px; border-radius:20px; margin-top:20px;">
+            ${paramsBlock}
+            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+                <span>Работы</span>
+                <span>${Math.round(worksCost).toLocaleString('ru-RU')} ₽</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+                <span>Отделочные материалы (стены + пол)</span>
+                <span>${Math.round(materialsCost).toLocaleString('ru-RU')} ₽</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+                <span>Инженерные решения (батареи, кондиционер, вода, потолки)</span>
+                <span>${Math.round(optionsCost).toLocaleString('ru-RU')} ₽</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+                <span>Мебель</span>
+                <span>${Math.round(furnitureCost).toLocaleString('ru-RU')} ₽</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
+                <span>Дополнительные опции</span>
+                <span>${Math.round(extraCost).toLocaleString('ru-RU')} ₽</span>
+            </div>
+            <div style="font-size:24px; font-weight:700; margin-top:12px; border-top:2px solid #dce0e6; padding-top:12px;">
+                Итого: ${Math.round(total).toLocaleString('ru-RU')} ₽
+            </div>
         </div>
-        <div class="result-row">
-            <span>Отделочные материалы (стены + пол)</span>
-            <span>${Math.round(materialsCost).toLocaleString('ru-RU')} ₽</span>
-        </div>
-        <div class="result-row">
-            <span>Инженерные решения (батареи, кондиционер, вода, потолки)</span>
-            <span>${Math.round(optionsCost).toLocaleString('ru-RU')} ₽</span>
-        </div>
-        <div class="result-row">
-            <span>Мебель</span>
-            <span>${Math.round(furnitureCost).toLocaleString('ru-RU')} ₽</span>
-        </div>
-        <div class="result-row">
-            <span>Дополнительные опции</span>
-            <span>${Math.round(extraCost).toLocaleString('ru-RU')} ₽</span>
-        </div>
-        <div class="result-total">
-            Итого: ${Math.round(total).toLocaleString('ru-RU')} ₽
-        </div>
-    </div>
-`;
-document.getElementById('result').innerHTML = resultHTML;
-goToPage(5);
-    
+    `;
+    document.getElementById('result').innerHTML = resultHTML;
+    goToPage(5);
+}  // <--- ВОТ ЭТА СКОБКА БЫЛА ПРОПУЩЕНА
+
 // Обработчик события для кнопки
 document.getElementById('calculateButton').onclick = calculate;
 
@@ -237,6 +243,26 @@ function resetForm() {
 
     // Переход на первую страницу
     goToPage(1);
+}
+
+// Сохранение в избранное (если нужно)
+function saveFavorite() {
+    const text = document.getElementById('result').innerText;
+    if (!text) { alert('Сначала рассчитайте!'); return; }
+    let favs = JSON.parse(localStorage.getItem('favs') || '[]');
+    favs.push({ date: new Date().toLocaleString(), data: text });
+    localStorage.setItem('favs', JSON.stringify(favs));
+    alert('⭐ Сохранено!');
+}
+
+function showFavorites() {
+    const favs = JSON.parse(localStorage.getItem('favs') || '[]');
+    if (!favs.length) { alert('Нет сохранённых смет.'); return; }
+    let msg = '📂 Ваши сметы:\n\n';
+    favs.forEach((item, i) => {
+        msg += `${i+1}. ${item.date}\n${item.data}\n\n`;
+    });
+    alert(msg);
 }
 
 //stady
