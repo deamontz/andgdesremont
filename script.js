@@ -173,27 +173,27 @@ let gips = potolok && potolok.value === 'gips';
     let resultHTML = `
         <div style="background:#f8fafc; padding:20px; border-radius:20px; margin-top:20px;">
             <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-                <span>🔨 Работы</span>
+                <span>Работы</span>
                 <span>${Math.round(worksCost).toLocaleString('ru-RU')} ₽</span>
             </div>
             <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-                <span>📦 Материалы (стены + пол)</span>
+                <span>Отделочные материалы (стены + пол)</span>
                 <span>${Math.round(materialsCost).toLocaleString('ru-RU')} ₽</span>
             </div>
             <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-                <span>🛠 Опции (батареи, кондиционер, вода, потолки)</span>
+                <span>Инженерные решения (батареи, кондиционер, вода, потолки)</span>
                 <span>${Math.round(optionsCost).toLocaleString('ru-RU')} ₽</span>
             </div>
             <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-                <span>🛋 Мебель</span>
+                <span>Мебель</span>
                 <span>${Math.round(furnitureCost).toLocaleString('ru-RU')} ₽</span>
             </div>
             <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-                <span>✨ Дополнительные опции</span>
+                <span>Дополнительные опции</span>
                 <span>${Math.round(extraCost).toLocaleString('ru-RU')} ₽</span>
             </div>
             <div style="font-size:24px; font-weight:700; margin-top:12px; border-top:2px solid #dce0e6; padding-top:12px;">
-                💰 Итого: ${Math.round(total).toLocaleString('ru-RU')} ₽
+                Итого: ${Math.round(total).toLocaleString('ru-RU')} ₽
             </div>
         </div>
     `;
@@ -233,27 +233,6 @@ function resetForm() {
 
     // Переход на первую страницу
     goToPage(1);
-}
-
-// Сохранение в избранное
-function saveFavorite() {
-    const text = document.getElementById('result').innerText;
-    if (!text) { alert('Сначала рассчитайте!'); return; }
-    let favs = JSON.parse(localStorage.getItem('favs') || '[]');
-    favs.push({ date: new Date().toLocaleString(), data: text });
-    localStorage.setItem('favs', JSON.stringify(favs));
-    alert('⭐ Сохранено!');
-}
-
-// Показать избранное
-function showFavorites() {
-    const favs = JSON.parse(localStorage.getItem('favs') || '[]');
-    if (!favs.length) { alert('Нет сохранённых смет.'); return; }
-    let msg = '📂 Ваши сметы:\n\n';
-    favs.forEach((item, i) => {
-        msg += `${i+1}. ${item.date}\n${item.data}\n\n`;
-    });
-    alert(msg);
 }
 
 //stady
