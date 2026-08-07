@@ -170,37 +170,41 @@ let gips = potolok && potolok.value === 'gips';
 
     total = Math.round(total / 100) * 100;
 
-    let resultHTML = `
-        <div style="background:#f8fafc; padding:20px; border-radius:20px; margin-top:20px;">
-            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-                <span>Работы</span>
-                <span>${Math.round(worksCost).toLocaleString('ru-RU')} ₽</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-                <span>Отделочные материалы (стены + пол)</span>
-                <span>${Math.round(materialsCost).toLocaleString('ru-RU')} ₽</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-                <span>Инженерные решения (батареи, кондиционер, вода, потолки)</span>
-                <span>${Math.round(optionsCost).toLocaleString('ru-RU')} ₽</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-                <span>Мебель</span>
-                <span>${Math.round(furnitureCost).toLocaleString('ru-RU')} ₽</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-                <span>Дополнительные опции</span>
-                <span>${Math.round(extraCost).toLocaleString('ru-RU')} ₽</span>
-            </div>
-            <div style="font-size:24px; font-weight:700; margin-top:12px; border-top:2px solid #dce0e6; padding-top:12px;">
-                Итого: ${Math.round(total).toLocaleString('ru-RU')} ₽
-            </div>
+let resultHTML = `
+    <div class="result-container">
+        <div class="result-object">
+            <strong>📐 Результат для объекта:</strong><br>
+            Площадь: ${area} м² &nbsp;|&nbsp; Высота потолка: ${Hkvar} м<br>
+            Уровень ремонта: ${type === 'budget' ? 'Бюджетный' : type === 'standard' ? 'Стандартный' : 'Премиум'} &nbsp;|&nbsp; Состояние: ${study === 'chern' ? 'Черновой' : study === 'chist' ? 'Чистовой' : 'Демонтаж'}
         </div>
-    `;
-    document.getElementById('result').innerHTML = resultHTML;
-    goToPage(5);
-}
-
+        <div class="result-row">
+            <span>Работы</span>
+            <span>${Math.round(worksCost).toLocaleString('ru-RU')} ₽</span>
+        </div>
+        <div class="result-row">
+            <span>Отделочные материалы (стены + пол)</span>
+            <span>${Math.round(materialsCost).toLocaleString('ru-RU')} ₽</span>
+        </div>
+        <div class="result-row">
+            <span>Инженерные решения (батареи, кондиционер, вода, потолки)</span>
+            <span>${Math.round(optionsCost).toLocaleString('ru-RU')} ₽</span>
+        </div>
+        <div class="result-row">
+            <span>Мебель</span>
+            <span>${Math.round(furnitureCost).toLocaleString('ru-RU')} ₽</span>
+        </div>
+        <div class="result-row">
+            <span>Дополнительные опции</span>
+            <span>${Math.round(extraCost).toLocaleString('ru-RU')} ₽</span>
+        </div>
+        <div class="result-total">
+            Итого: ${Math.round(total).toLocaleString('ru-RU')} ₽
+        </div>
+    </div>
+`;
+document.getElementById('result').innerHTML = resultHTML;
+goToPage(5);
+    
 // Обработчик события для кнопки
 document.getElementById('calculateButton').onclick = calculate;
 
