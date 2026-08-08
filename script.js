@@ -182,7 +182,7 @@ function calculate() {
         <div style="background:#f8fafc; padding:20px; border-radius:20px; margin-top:20px;">
             ${paramsBlock}
             <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-                <span>Работы</span>
+                <span>Работы и черновые материалы</span>
                 <span>${Math.round(worksCost).toLocaleString('ru-RU')} ₽</span>
             </div>
             <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
@@ -190,7 +190,7 @@ function calculate() {
                 <span>${Math.round(materialsCost).toLocaleString('ru-RU')} ₽</span>
             </div>
             <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
-                <span>Инженерные решения (батареи, кондиционер, вода, потолки)</span>
+                <span>Инженерные решения (радиаторы, кондиционер, вода, потолки)</span>
                 <span>${Math.round(optionsCost).toLocaleString('ru-RU')} ₽</span>
             </div>
             <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #e2e8f0;">
